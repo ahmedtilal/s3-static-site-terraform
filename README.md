@@ -4,15 +4,11 @@ A Terraform definition to deploy your static website on AWS.
 
 ## Prerequisites
 
----
-
 1. [AWS CLI](https://aws.amazon.com/cli/) connected to an [AWS account](https://aws.amazon.com/resources/create-account/).
 2. [Terraform CLI](https://developer.hashicorp.com/terraform/cli).
 3. [A hosted zone in AWS Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html) with the domain name you want to use.
 
 ## Usage
-
----
 
 Create a folder inside the `live` directory and create a new main.tf file with the following:
 
