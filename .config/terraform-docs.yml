@@ -1,0 +1,67 @@
+version: ""
+
+formatter: markdown table
+
+name: s3-static-site-terraform
+
+content: |-
+  # AWS Static Website Terraform Deployment
+
+  A Terraform definition to deploy your static website on AWS.
+
+  ## Prerequisites
+
+  1. [AWS CLI](https://aws.amazon.com/cli/) connected to an [AWS account](https://aws.amazon.com/resources/create-account/).
+  2. [Terraform CLI](https://developer.hashicorp.com/terraform/cli).
+  3. [A hosted zone in AWS Route53](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/CreatingHostedZone.html) with the domain name you want to use.
+
+  ## Usage
+
+  Create a folder inside the `live` directory and create a new main.tf file with the following:
+
+  ```
+  module "###YOUR_MODULE_NAME###" {
+    source = "../../modules/s3-website"
+
+    domain_name = "###YOUR_DOMAIN_NAME###"
+    route53_zone_name = "###YOUR_ROUTE53_ZONE_NAME###"
+    secret = "###YOUR_SECRET_KEY###"
+  }
+
+  output "website_endpoint" {
+    value = module.###YOUR_MODULE_NAME###.website_endpoint
+  }
+
+  output "website_domain_name" {
+    value = module.###YOUR_MODULE_NAME###.website_domain_name
+  }
+  ```
+  ---
+  
+  {{ .Requirements }}
+
+  {{ .Resources }}
+
+  {{ .Inputs }}
+
+  {{ .Outputs }}
+
+  ---
+
+  <span style="color:red">NOTE:</span> Manual changes to the README will be overwritten when the documentation is updated. To update the documentation, run `terraform-docs -c ./.config/terraform-docs.yml ./modules/s3-website/ && mv ./modules/s3-website/README.md .`
+
+sections:
+  show:
+    - requirements
+    - resources
+    - inputs
+    - outputs
+    - providers
+
+sort:
+  enabled: true
+  by: name
+
+output:
+  file: README.md
+  mode: replace
